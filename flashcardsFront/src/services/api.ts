@@ -100,7 +100,7 @@ class ApiService {
   private baseURL: string;
 
   constructor() {
-    this.baseURL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+    this.baseURL = import.meta.env.VITE_API_URL || 'http://sbahiyahia.com/api';
     
     this.api = axios.create({
       baseURL: this.baseURL,
