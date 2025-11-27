@@ -303,7 +303,7 @@ class AigenController extends ApiController
             $textgen = $this->cleanUtf8($request->text);
 
             // 🔤 Limit to 4000 characters (to respect token limits)
-            //$textChunk = substr($textgen, 0, 1000);
+            $textChunk = substr($textgen, 0, 1000);
             $ncards = $request->cards_number ?? 10;
 
             // 🇫🇷 Your French prompt
@@ -326,7 +326,7 @@ class AigenController extends ApiController
                 - Utilisez un langage clair et accessible
 
                 Texte à analyser :
-                " . $textgen;
+                " . $textChunk;
 
             // Check if API key is configured
             $apiKey = config('services.openrouter.api_key');
@@ -339,7 +339,7 @@ class AigenController extends ApiController
             }
             \Log::info('Making OpenRouter API request', [
                 'model' => 'mistralai/mistral-7b-instruct:free',
-                'text_length' => strlen($textgen)
+                'text_length' => strlen($textChunk)
             ]);
             
             $response = Http::withToken($apiKey)

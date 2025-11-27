@@ -49,6 +49,7 @@ class AuthController extends ApiController
                 'token' => $token,
                 'email_verification_sent' => true
             ], 'تم إنشاء الحساب بنجاح. يرجى التحقق من بريدك الإلكتروني لتفعيل الحساب', 201);
+            
         } catch (\Illuminate\Validation\ValidationException $e) {
             \Log::error('Registration validation error:', $e->errors());
             return $this->validationErrorResponse($e->errors());
