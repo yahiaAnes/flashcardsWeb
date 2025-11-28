@@ -37,9 +37,9 @@ class AigenController extends ApiController
         try {
             $lesson = Lesson::findOrFail($request->lesson_id);
             
-            if ($lesson->user_id !== auth()->id()) {
-                return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
-            }
+            // if ($lesson->user_id !== auth()->id()) {
+            //     return response()->json(['success' => false, 'message' => 'Unauthorized'], 403);
+            // }
 
             // 📄 Get text (from PDF or direct input)
             $pdfText = null;

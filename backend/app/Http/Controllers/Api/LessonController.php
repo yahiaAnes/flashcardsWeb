@@ -100,9 +100,9 @@ class LessonController extends ApiController
     
     public function showWithFlashcards(Lesson $lesson)
     {
-        if ($lesson->user_id !== auth()->id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        // if ($lesson->user_id !== auth()->id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 403);
+        // }
 
         return response()->json([
             'lesson' => $lesson,
@@ -120,10 +120,10 @@ class LessonController extends ApiController
         
         $lesson = Lesson::findOrFail($request->lesson_id);
         
-        // Ensure user owns the lesson
-        if ($lesson->user_id !== auth()->id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        // // Ensure user owns the lesson
+        // if ($lesson->user_id !== auth()->id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 403);
+        // }
 
         $flashcard = Flashcard::create([
             'lesson_id' => $lesson->id,
@@ -142,9 +142,9 @@ class LessonController extends ApiController
     {
         $request->validate(['difficulty' => 'required|in:easy,medium,hard']);
         
-        if ($flashcard->user_id !== auth()->id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        // if ($flashcard->user_id !== auth()->id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 403);
+        // }
 
         // Simple spaced repetition logic
         $interval = match($request->difficulty) {
@@ -170,9 +170,9 @@ class LessonController extends ApiController
             'answer' => 'sometimes|string|max:2000',
         ]);
 
-        if ($flashcard->user_id !== auth()->id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        // if ($flashcard->user_id !== auth()->id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 403);
+        // }
 
         $flashcard->update($request->only(['question', 'answer']));
         return response()->json($flashcard);
@@ -180,9 +180,9 @@ class LessonController extends ApiController
 
     public function deleteFlashcard(Flashcard $flashcard)
     {
-        if ($flashcard->user_id !== auth()->id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
+        // if ($flashcard->user_id !== auth()->id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 403);
+        // }
 
         $flashcard->delete();
 
