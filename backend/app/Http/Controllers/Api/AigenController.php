@@ -79,7 +79,7 @@ class AigenController extends ApiController
                 ], 500);
             }
             \Log::info('Making OpenRouter API request', [
-                'model' => 'mistralai/mistral-7b-instruct:free',
+                'model' => 'mistralai/mixtral-8x22b-instruct',
                 'text_length' => strlen($textChunk)
             ]);
             
@@ -90,7 +90,7 @@ class AigenController extends ApiController
                 ])
                 ->timeout(60)
                 ->post('https://openrouter.ai/api/v1/chat/completions', [
-                    'model' => 'mistralai/mistral-7b-instruct:free',
+                    'model' => 'mistralai/mixtral-8x22b-instruct',
                     'messages' => [
                         ['role' => 'user', 'content' => $prompt]
                     ],
