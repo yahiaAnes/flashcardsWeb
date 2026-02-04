@@ -65,6 +65,7 @@ class AigenController extends ApiController
                 - Les réponses doivent être complètes mais concises
                 - Couvrez les points les plus importants du texte
                 - Utilisez un langage clair et accessible
+                - Utilisez la meme langue que le texte
 
                 Texte à analyser :
                 " . $textChunk;
