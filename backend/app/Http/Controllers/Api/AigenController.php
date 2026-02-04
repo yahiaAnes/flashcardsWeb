@@ -79,7 +79,7 @@ class AigenController extends ApiController
                 ], 500);
             }
             \Log::info('Making OpenRouter API request', [
-                'model' => 'deepseek/deepseek-r1-0528:free',
+                'model' => 'openai/chatgpt-4o-latest',
                 'text_length' => strlen($textChunk)
             ]);
             
@@ -90,7 +90,7 @@ class AigenController extends ApiController
                 ])
                 ->timeout(60)
                 ->post('https://openrouter.ai/api/v1/chat/completions', [
-                    'model' => 'deepseek/deepseek-r1-0528:free',
+                    'model' => 'openai/chatgpt-4o-latest',
                     'messages' => [
                         ['role' => 'user', 'content' => $prompt]
                     ],
