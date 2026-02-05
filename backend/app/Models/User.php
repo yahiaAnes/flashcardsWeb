@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable 
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, HasApiTokens,Notifiable;
@@ -35,10 +34,7 @@ class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return true;
-    }   
+    
     /**
      * Get the attributes that should be cast.
      *
